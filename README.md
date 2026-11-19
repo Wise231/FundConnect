@@ -1,44 +1,175 @@
+
 # FundConnect
 
-A .NET 10 ASP.NET Core MVC starter application for business funding discovery and application management.
+### Connecting Businesses to Funding Opportunities
 
-## Included in this starter
-- Five-project solution structure (Domain, Application, Infrastructure, Web, Tests)
-- ASP.NET Core Identity registration, login, logout and role seeding
-- SQL Server / LocalDB Entity Framework Core setup
-- Funding opportunity directory and details
-- Business profile creation
-- Funding application submission
-- Initial funding-match scoring service and unit tests
-- Responsive dark interface
+FundConnect is a full-stack web application developed to simplify how businesses discover, evaluate, and apply for funding opportunities.
 
-## Requirements
-- Visual Studio Community with the ASP.NET and web development workload
-- .NET 10 SDK
-- SQL Server LocalDB (included with some Visual Studio installations) or SQL Server Express
-- Internet access for initial NuGet package restore
+The platform aims to connect businesses with relevant funding programmes based on their business categories and eligibility requirements, providing a more structured and accessible approach to finding financial support.
 
-## Open and run
-1. Extract the ZIP.
-2. Open `FundConnect.slnx` in Visual Studio 2022 17.14 or later with .NET 10 support.
-3. Set `FundConnect.Web` as the startup project.
-4. Confirm LocalDB is installed. The default connection string uses `(localdb)\MSSQLLocalDB`.
-5. Build the solution and run `FundConnect.Web`.
+## Project Overview
 
-If LocalDB is not installed, install SQL Server Express or the SQL Server Express LocalDB feature and update `ConnectionStrings:DefaultConnection` in `FundConnect.Web/appsettings.json`.
+Accessing suitable funding opportunities can be challenging for businesses, particularly when information is scattered across multiple platforms.
 
-## First-run database setup
-The app is configured to apply EF Core migrations at startup. Create the initial migration from the solution folder using:
+FundConnect addresses this challenge by providing a centralised platform where business owners can manage their business profiles, explore funding opportunities, and submit funding applications.
 
-```powershell
-dotnet tool install --global dotnet-ef --version 10.0.0
-dotnet ef migrations add InitialCreate --project FundConnect.Infrastructure --startup-project FundConnect.Web --output-dir Data/Migrations
-dotnet ef database update --project FundConnect.Infrastructure --startup-project FundConnect.Web
+The application is designed with scalability, maintainability, security, and a user-friendly experience in mind.
+
+## Key Features
+
+- **User Authentication:** Registration, login, and secure account management.
+- **Role-Based Access Control:** Different permissions for business owners and administrators.
+- **Business Profiles:** Capture and manage business information.
+- **Funding Directory:** Browse available funding opportunities.
+- **Funding Details:** View opportunity requirements and eligibility information.
+- **Funding Matching:** Apply structured criteria to identify relevant opportunities.
+- **Application Management:** Submit and manage funding applications.
+- **Database Integration:** Persist application and business information.
+
+## Technology Stack
+
+| Technology | Purpose |
+|---|---|
+| C# | Core application development |
+| .NET 10 | Application framework |
+| ASP.NET Core MVC | Web application architecture |
+| Entity Framework Core | Object-relational mapping |
+| SQL Server | Database management |
+| ASP.NET Core Identity | Authentication and authorisation |
+| HTML5 | Application structure |
+| CSS3 | Styling and responsive design |
+| JavaScript | Client-side functionality |
+| xUnit | Unit testing |
+
+## Architecture
+
+FundConnect follows a layered architecture to separate responsibilities and improve maintainability.
+
+```text
+FundConnect
+│
+├── FundConnect.Web
+│   └── MVC Controllers, Views and UI
+│
+├── FundConnect.Application
+│   └── Application Services and Business Logic
+│
+├── FundConnect.Domain
+│   └── Core Entities and Domain Models
+│
+├── FundConnect.Infrastructure
+│   └── Database and Persistence
+│
+└── FundConnect.Tests
+    └── Unit Tests
 ```
 
-Then run the web project. If the database does not yet exist, the startup migration call will create it.
+## Core Development Concepts
 
-## Important limitations
-This is a foundation, not a production-ready funding service. Seeded opportunities are fictional examples. The matching engine is a transparent demonstration and is not a legal or financial eligibility decision. Before public deployment, add verified funding data sources, document upload malware scanning and storage, email confirmation and password reset, anti-abuse controls, privacy notices, application status history, admin workflows, comprehensive validation, audit policies, logging/monitoring, backups and security review.
+This project demonstrates practical application of:
+
+- Object-Oriented Programming (OOP)
+- Model-View-Controller (MVC) architecture
+- Layered application architecture
+- Dependency Injection
+- Entity Framework Core
+- Database modelling and relationships
+- Authentication and authorisation
+- Separation of concerns
+- Unit testing
+- Secure application development principles
+
+## Getting Started
+
+### Prerequisites
+
+Ensure the following tools are installed:
+
+- Visual Studio 2022 or later
+- .NET 10 SDK
+- SQL Server LocalDB or SQL Server
+- Git
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Wise231/FundConnect.git
+```
+
+2. Open `FundConnect.slnx` in Visual Studio.
+
+3. Restore NuGet packages:
+
+```bash
+dotnet restore FundConnect.slnx
+```
+
+4. Configure the database connection in:
+
+`FundConnect.Web/appsettings.json`
+
+5. Create the database migration:
+
+```bash
+dotnet ef migrations add InitialCreate --project FundConnect.Infrastructure --startup-project FundConnect.Web --context FundConnectDbContext --output-dir Data/Migrations
+```
+
+6. Apply database migrations:
+
+```bash
+dotnet ef database update --project FundConnect.Infrastructure --startup-project FundConnect.Web --context FundConnectDbContext
+```
+
+7. Build the solution:
+
+```bash
+dotnet build FundConnect.slnx
+```
+
+8. Run the application:
+
+```bash
+dotnet run --project FundConnect.Web
+```
+
+## Testing
+
+Run the automated tests using:
+
+```bash
+dotnet test FundConnect.slnx
+```
+
+## Project Objectives
+
+FundConnect is being developed to demonstrate how modern .NET technologies can be used to solve practical business challenges.
+
+The project focuses on building a maintainable, secure, and scalable platform while demonstrating full-stack development, database integration, application architecture, and software engineering principles.
+
+## Future Enhancements
+
+Potential areas for further development include:
+
+- Advanced funding eligibility algorithms.
+- Funding administrator dashboards.
+- Document uploads and verification.
+- Application status tracking and notifications.
+- Funding opportunity management.
+- Reporting and analytics.
+- External funding data API integrations.
+
+## Developer
+
+**Wise Tshikovhela**
+
+Software Developer | Full-Stack Development | C# | .NET | Java | SQL
+
+GitHub: [Wise231](https://github.com/Wise231)
+
+---
+
+*FundConnect — Making business funding opportunities more accessible.*
 
 Never commit real credentials, connection secrets, personal information or real business documents to GitHub.
