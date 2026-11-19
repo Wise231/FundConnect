@@ -1,0 +1,22 @@
+@model IEnumerable<FundingOpportunity>
+@{ ViewData["Title"] = "Funding directory"; }
+<section class="page-heading">
+    <div class="eyebrow">DISCOVER OPPORTUNITIES</div><h1>Funding directory</h1>
+    <p>Explore illustrative funding listings and review their requirements.</p>
+</section>
+<form method="get" class="search-bar">
+    <input name="search" value="@ViewBag.Search" placeholder="Search by opportunity, provider or industry..." />
+    <button class="button primary" type="submit">Search</button>
+</form>
+<div class="opportunity-list">
+@foreach (var item in Model)
+{
+    <article class="opportunity-card">
+        <div class="opportunity-top"><span class="tag">@item.Industry</span><span class="closing">Closes @item.ClosingDate.ToString("dd MMM yyyy")</span></div>
+        <h2>@item.Title</h2><p>@item.Description</p>
+        <div class="opportunity-meta"><div><small>PROVIDER</small><strong>@item.Provider</strong></div><div><small>MAXIMUM FUNDING</small><strong>R @item.MaximumFunding.ToString("N0")</strong></div><div><small>MIN. TURNOVER</small><strong>R @item.MinimumTurnover.ToString("N0")</strong></div></div>
+        <a class="text-link" asp-action="Details" asp-route-id="@item.Id">View requirements →</a>
+    </article>
+}
+@if (!Model.Any()) { <div class="empty-state">No matching opportunities were found.</div> }
+</div>

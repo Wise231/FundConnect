@@ -1,0 +1,15 @@
+@{ ViewData["Title"] = "Dashboard"; }
+<section class="page-heading"><div class="eyebrow">YOUR WORKSPACE</div><h1>Welcome back, @User.Identity?.Name</h1><p>Your funding activity at a glance.</p></section>
+<div class="stats-grid">
+    <article class="stat-card"><span>Active opportunities</span><strong>@ViewBag.OpportunityCount</strong><small>Currently listed</small></article>
+    <article class="stat-card"><span>Registered businesses</span><strong>@ViewBag.BusinessCount</strong><small>Platform-wide</small></article>
+    <article class="stat-card"><span>Applications submitted</span><strong>@ViewBag.ApplicationCount</strong><small>Platform-wide</small></article>
+</div>
+<div class="dashboard-grid">
+    <section class="panel"><div class="panel-heading"><div><div class="eyebrow">FUNDING DIRECTORY</div><h2>Explore opportunities</h2></div><a class="text-link" asp-controller="Funding" asp-action="Index">View all →</a></div>
+        @foreach (FundingOpportunity item in ViewBag.RecentOpportunities) {
+            <div class="mini-row"><div><strong>@item.Title</strong><small>@item.Provider</small></div><span class="tag">@item.Industry</span></div>
+        }
+    </section>
+    <section class="panel"><div class="eyebrow">BUSINESS PROFILE</div><h2>Set up your business</h2><p>Add your business information to prepare for funding applications and eligibility checks.</p><a class="button primary full" asp-controller="Business" asp-action="Create">Create business profile</a></section>
+</div>

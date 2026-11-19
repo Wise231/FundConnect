@@ -1,0 +1,25 @@
+@model FundingOpportunity
+@{ ViewData["Title"] = Model.Title; }
+<section class="page-heading"><div class="eyebrow">FUNDING OPPORTUNITY</div><h1>@Model.Title</h1><p>@Model.Description</p></section>
+<div class="detail-grid">
+    <section class="panel"><h2>Opportunity details</h2>
+        <dl class="details">
+            <dt>Provider</dt><dd>@Model.Provider</dd>
+            <dt>Industry</dt><dd>@Model.Industry</dd>
+            <dt>Province</dt><dd>@Model.Province</dd>
+            <dt>Minimum annual turnover</dt><dd>R @Model.MinimumTurnover.ToString("N2")</dd>
+            <dt>Minimum years operating</dt><dd>@Model.MinimumOperatingYears</dd>
+            <dt>Maximum funding</dt><dd>R @Model.MaximumFunding.ToString("N2")</dd>
+            <dt>Closing date</dt><dd>@Model.ClosingDate.ToString("dd MMMM yyyy")</dd>
+        </dl>
+        <p class="notice">This is an illustrative listing. Confirm programme details with the actual provider before making business decisions.</p>
+    </section>
+    <aside class="panel accent-panel"><div class="eyebrow">NEXT STEP</div><h2>Interested in applying?</h2><p>Create an account and complete your business profile before submitting an application.</p>
+        @if (User.Identity?.IsAuthenticated == true) {
+            <a class="button primary full" asp-controller="Applications" asp-action="Create" asp-route-opportunityId="@Model.Id">Start application</a>
+        } else {
+            <a class="button primary full" asp-controller="Account" asp-action="Register">Create account</a>
+            <a class="text-link" asp-controller="Account" asp-action="Login">Already registered? Sign in</a>
+        }
+    </aside>
+</div>

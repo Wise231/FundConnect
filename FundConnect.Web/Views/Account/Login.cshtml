@@ -1,0 +1,11 @@
+@model FundConnect.Web.ViewModels.LoginViewModel
+@{ ViewData["Title"] = "Sign in"; }
+<section class="auth-wrap"><div class="auth-intro"><div class="eyebrow">WELCOME BACK</div><h1>Your funding workspace, all in one place.</h1><p>Sign in to manage your business profile and applications.</p></div>
+<form asp-action="Login" method="post" class="form-panel auth-card">
+    <h2>Sign in</h2><div asp-validation-summary="All" class="validation"></div>
+    <label>Email address<input asp-for="Email" autocomplete="username" /></label>
+    <label>Password<input asp-for="Password" autocomplete="current-password" /></label>
+    <label class="check-label"><input asp-for="RememberMe" /> Remember me</label>
+    <button class="button primary full" type="submit">Sign in</button>
+    <p class="form-foot">New to FundConnect? <a asp-action="Register">Create an account</a></p>
+</form></section>

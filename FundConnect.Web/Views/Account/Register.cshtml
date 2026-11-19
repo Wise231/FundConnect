@@ -1,0 +1,12 @@
+@model FundConnect.Web.ViewModels.RegisterViewModel
+@{ ViewData["Title"] = "Create account"; }
+<section class="auth-wrap"><div class="auth-intro"><div class="eyebrow">JOIN FUNDConnect</div><h1>Start with a stronger business profile.</h1><p>Create an account to explore funding opportunities and organise your applications.</p></div>
+<form asp-action="Register" method="post" class="form-panel auth-card">
+    <h2>Create your account</h2><div asp-validation-summary="All" class="validation"></div>
+    <label>Full name<input asp-for="FullName" autocomplete="name" /></label>
+    <label>Email address<input asp-for="Email" autocomplete="email" /></label>
+    <label>Password<input asp-for="Password" autocomplete="new-password" /></label>
+    <label>Confirm password<input asp-for="ConfirmPassword" autocomplete="new-password" /></label>
+    <button class="button primary full" type="submit">Create account</button>
+    <p class="form-foot">Already registered? <a asp-action="Login">Sign in</a></p>
+</form></section>

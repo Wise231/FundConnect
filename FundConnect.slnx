@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="FundConnect.Domain/FundConnect.Domain.csproj" />
+  <Project Path="FundConnect.Application/FundConnect.Application.csproj" />
+  <Project Path="FundConnect.Infrastructure/FundConnect.Infrastructure.csproj" />
+  <Project Path="FundConnect.Web/FundConnect.Web.csproj" />
+  <Project Path="FundConnect.Tests/FundConnect.Tests.csproj" />
+</Solution>

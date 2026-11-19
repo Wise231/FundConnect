@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FundConnect</title>
+    <meta name="description" content="Discover business funding opportunities and manage applications with FundConnect." />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+<header class="topbar">
+    <a class="brand" asp-controller="Home" asp-action="Index"><span class="brand-mark">F</span> FundConnect</a>
+    <nav>
+        <a asp-controller="Funding" asp-action="Index">Funding directory</a>
+        @if (User.Identity?.IsAuthenticated == true)
+        {
+            <a asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+            <form asp-controller="Account" asp-action="Logout" method="post" class="inline-form">
+                <button class="nav-button" type="submit">Sign out</button>
+            </form>
+        }
+        else
+        {
+            <a asp-controller="Account" asp-action="Login">Sign in</a>
+            <a class="nav-cta" asp-controller="Account" asp-action="Register">Get started</a>
+        }
+    </nav>
+</header>
+<main class="page-shell">
+    @if (TempData["Success"] is string success) { <div class="alert success">@success</div> }
+    @RenderBody()
+</main>
+<footer class="footer"><span>© @DateTime.UtcNow.Year FundConnect</span><span>Funding discovery made clearer.</span></footer>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

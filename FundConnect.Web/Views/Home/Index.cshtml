@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Find funding for your next step";
+}
+<section class="hero">
+    <div class="eyebrow"><span class="pulse"></span> BUSINESS FUNDING, MADE CLEARER</div>
+    <h1>Find the right funding.<br /><span>Build what comes next.</span></h1>
+    <p class="hero-copy">Discover funding opportunities, understand their requirements and keep your applications organised in one place.</p>
+    <div class="hero-actions">
+        <a class="button primary" asp-controller="Funding" asp-action="Index">Explore opportunities <span>→</span></a>
+        <a class="button secondary" asp-controller="Account" asp-action="Register">Create a business profile</a>
+    </div>
+    <div class="hero-note"><span>✓</span> Clear requirements <span>✓</span> Application tracking <span>✓</span> Business-focused</div>
+</section>
+<section class="section">
+    <div class="section-heading"><div><div class="eyebrow">HOW IT WORKS</div><h2>A clearer path to funding.</h2></div><a asp-controller="Funding" asp-action="Index" class="text-link">Browse funding →</a></div>
+    <div class="feature-grid">
+        <article class="feature-card"><div class="feature-icon">01</div><h3>Create your profile</h3><p>Tell us about your business, industry, location and funding needs.</p></article>
+        <article class="feature-card"><div class="feature-icon">02</div><h3>Explore opportunities</h3><p>Review funding programmes and the requirements that matter.</p></article>
+        <article class="feature-card"><div class="feature-icon">03</div><h3>Manage applications</h3><p>Submit applications and keep important progress in view.</p></article>
+    </div>
+</section>
+<section class="callout"><div><div class="eyebrow">BUILT FOR BUSINESS OWNERS</div><h2>Your next opportunity starts with a clear picture.</h2><p>Build your profile and make funding research more organised.</p></div><a class="button primary" asp-controller="Account" asp-action="Register">Get started →</a></section>

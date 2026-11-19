@@ -1,0 +1,10 @@
+@model FundingApplication
+@{ ViewData["Title"] = "Apply for funding"; FundingOpportunity? opportunity = ViewBag.Opportunity; }
+<section class="page-heading"><div class="eyebrow">APPLICATION</div><h1>Apply for funding</h1><p>@opportunity?.Title</p></section>
+<form asp-action="Create" method="post" class="form-panel">
+    <div asp-validation-summary="All" class="validation"></div>
+    <input asp-for="FundingOpportunityId" type="hidden" />
+    <label>Amount requested (ZAR)<input asp-for="AmountRequested" type="number" min="1" max="@opportunity?.MaximumFunding" step="0.01" required /></label>
+    <label class="wide">Why is your business applying?<textarea asp-for="Motivation" rows="6" minlength="30" required placeholder="Explain how the funding will be used and what outcomes it will support."></textarea></label>
+    <button class="button primary" type="submit">Submit application</button>
+</form>
